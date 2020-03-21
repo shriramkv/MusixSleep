@@ -15,14 +15,16 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private CheckBox remember_me;
-    private TextView name, age;
+    private EditText name, age;
     private Button start;
+    private TextView welcome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (r_check.equals("true")) {
             remember_me.setChecked(true);
+            welcome.setText("Welcome Back, "+sharedPreferences.getString("name", ""));
             name.setText(sharedPreferences.getString("name", ""));
             age.setText(sharedPreferences.getString("age", ""));
         }
@@ -95,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        welcome = findViewById(R.id.welcome_text);
         remember_me = findViewById(R.id.remember_me);
         name = findViewById(R.id.name);
         age = findViewById(R.id.age);

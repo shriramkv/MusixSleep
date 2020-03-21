@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Musix Sleep</string>
-    <string name="welcome_back">Welcome Back</string>
+    <string name="welcome_back">Welcome Guest</string>
     <string name="age">Age</string>
     <string name="name">Name</string>
     <string name="remember_me">Remember me</string>
     <string name="let_s_start">LET\'S START</string>
+    <string name="musix_sleep">Musix Sleep</string>
 </resources>

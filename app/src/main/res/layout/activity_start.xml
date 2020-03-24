@@ -33,6 +33,21 @@
                 android:textStyle="bold" />
 
         </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <TextView
+            android:id="@+id/intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shimmer_view_container"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:padding="10dp"
+            android:text="@string/intro_text"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
     <ScrollView
@@ -45,7 +60,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/song_selector"
             android:foreground="?android:attr/selectableItemBackground"
             android:padding="10dp">
@@ -65,23 +81,25 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_toEndOf="@+id/select_song_picture"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:weightSum="2">
 
                 <TextView
                     android:id="@+id/current_song"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
-                    android:ellipsize = "marquee"
-                    android:fadingEdge = "horizontal"
-                    android:marqueeRepeatLimit = "marquee_forever"
-                    android:scrollHorizontally = "true"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:fadingEdge="horizontal"
+                    android:marqueeRepeatLimit="marquee_forever"
                     android:padding="10dp"
+                    android:scrollHorizontally="true"
                     android:singleLine="true"
                     android:text="Current Song"
                     android:textColor="@android:color/white"
@@ -91,6 +109,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_weight="1"
                     android:weightSum="3">
 
                     <ImageView
@@ -117,6 +136,20 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/song_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/select_song_picture"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorAccent"
+                android:progressTint="@color/textWhite"
+                android:thumb="@drawable/thumb_image"
+                android:thumbOffset="12dp"
+                android:thumbTint="@color/textWhite" />
 
         </RelativeLayout>
 

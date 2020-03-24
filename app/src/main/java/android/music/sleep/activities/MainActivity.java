@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private CheckBox remember_me;
     private EditText name, age;
-    private Button start;
+    private Button start, admin;
     private TextView welcome;
 
     @Override
@@ -95,6 +95,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AdminActivity.class));
+                finish();
+            }
+        });
     }
 
     private void initViews() {
@@ -103,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         age = findViewById(R.id.age);
         start = findViewById(R.id.startBtn);
+        admin = findViewById(R.id.adminBtn);
     }
 
     public boolean isConnected() {

@@ -6,4 +6,11 @@
     <string name="remember_me">Remember me</string>
     <string name="let_s_start">LET\'S START</string>
     <string name="musix_sleep">Musix Sleep</string>
+    <string name="intro_text">We provide you the best solution for sleep. Just sit back and relax! Fall asleep, we take care of switching off the music!</string>
+    <string name="admin">Click here to sign in as admin</string>
+    <string name="sign_in_as_admin">Sign in as Admin</string>
+    <string name="admin_portal">Admin portal</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="upload_songs">Upload Songs</string>
 </resources>

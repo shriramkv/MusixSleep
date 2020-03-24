@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "188038919704",
+    "firebase_url": "https://musix-sleep.firebaseio.com",
+    "project_id": "musix-sleep",
+    "storage_bucket": "musix-sleep.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188038919704:android:63e4f9de204fcac0dcb56d",
+        "android_client_info": {
+          "package_name": "android.music.sleep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "188038919704-7kge0tgik7ju8jab6fk6pm4am3i3brj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1w8lI_pieBdvWEKG072VtiPRZN4G-lIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "188038919704-7kge0tgik7ju8jab6fk6pm4am3i3brj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

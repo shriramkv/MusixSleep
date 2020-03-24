@@ -10,7 +10,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/login_layout"
+            android:id="@+id/admin_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -32,14 +32,14 @@
             </FrameLayout>
 
             <TextView
-                android:id="@+id/welcome_text"
+                android:id="@+id/admin_welcome_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:fontFamily="@font/product_sans_bold"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="@string/welcome_back"
+                android:text="@string/admin_portal"
                 android:textAllCaps="true"
                 android:textColor="@color/colorAccent"
                 android:textSize="25sp" />
@@ -52,20 +52,20 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="10dp"
-                android:hint="@string/name"
+                android:hint="@string/username"
                 app:startIconDrawable="@drawable/name_b">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name"
+                    android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="textEmailAddress"
                     android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_field_boxes2"
+                android:id="@+id/box2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -73,19 +73,19 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="10dp"
                 app:startIconDrawable="@drawable/id_b"
-                android:hint="@string/age">
+                android:hint="@string/password">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/age"
+                    android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="textPassword"
                     android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <CheckBox
-                android:id="@+id/remember_me"
+                android:id="@+id/remember_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
@@ -96,43 +96,15 @@
                 android:textSize="15sp" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/startBtn"
+                android:id="@+id/uploadBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
                 android:padding="15dp"
                 app:backgroundTint="@color/colorAccent"
-                android:text="@string/let_s_start"
-                android:textColor="@color/textWhite"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/admin"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textColor="@color/textBlack"
-                android:layout_marginTop="7dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:textSize="18sp"
-                android:layout_marginBottom="7dp"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/adminBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
-                android:padding="15dp"
-                app:backgroundTint="@color/colorAccent"
-                android:text="@string/sign_in_as_admin"
+                android:text="@string/upload_songs"
                 android:textColor="@color/textWhite"
                 android:textSize="16sp"
                 android:textStyle="bold"/>

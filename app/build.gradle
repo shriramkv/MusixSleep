@@ -48,6 +48,8 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     //CardView
     implementation 'androidx.cardview:cardview:1.0.0'
+    //ProgressBar
+    implementation 'me.zhanghai.android.materialprogressbar:library:1.6.1'
     //Firebase
     implementation 'com.google.firebase:firebase-analytics:17.2.3'
     implementation 'com.google.firebase:firebase-storage:19.1.1'

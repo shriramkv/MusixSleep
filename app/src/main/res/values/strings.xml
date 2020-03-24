@@ -13,4 +13,11 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="upload_songs">Upload Songs</string>
+    <string name="upload_the_songs_here">UPLOAD THE SONGS HERE</string>
+    <string name="song_name">Song name</string>
+    <string name="song_artist">Song artist</string>
+    <string name="raaga">Raaga</string>
+    <string name="upload">UPLOAD SONG</string>
+    <string name="select_song">Select song</string>
+    <string name="no_song_selected">No song selected</string>
 </resources>

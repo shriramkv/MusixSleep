@@ -33,6 +33,7 @@ import java.util.List;
 
 public class StartActivity extends AppCompatActivity {
 
+    boolean doubleBackToExitPressedOnce = false;
     private MediaPlayer mediaPlayer;
     private Runnable runnable;
     private Handler handler;
@@ -104,18 +105,38 @@ public class StartActivity extends AppCompatActivity {
     }
 
     private void changeSeekbar() {
-        song_seekbar.setProgress(mediaPlayer.getCurrentPosition());
-        if (mediaPlayer.isPlaying()) {
-            runnable = new Runnable() {
-                @Override
-                public void run() {
-                    changeSeekbar();
-                }
-            };
-            handler.postDelayed(runnable, 1000);
+        if (mediaPlayer != null) {
+            song_seekbar.setProgress(mediaPlayer.getCurrentPosition());
+            if (mediaPlayer.isPlaying()) {
+                runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        changeSeekbar();
+                    }
+                };
+                handler.postDelayed(runnable, 1000);
+            }
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+            super.onBackPressed();
+            return;
+        }
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
+    }
 
     @Override
     protected void onDestroy() {
@@ -127,6 +148,12 @@ public class StartActivity extends AppCompatActivity {
         UploadSong uploadSong = arrayListSongs.get(adapterPosition);
         song_name.setText(uploadSong.getSongName() + " - by " + uploadSong.getSongArtist());
         handler = new Handler();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+            playIcon.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+        }
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         mediaPlayer.setDataSource(uploadSong.getSongLink());

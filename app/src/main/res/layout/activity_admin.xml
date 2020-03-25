@@ -84,17 +84,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <CheckBox
-                android:id="@+id/remember_admin"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="@string/remember_me"
-                android:textAllCaps="true"
-                android:textColor="@color/textBlack"
-                android:textSize="15sp" />
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/uploadBtn"
                 android:layout_width="match_parent"

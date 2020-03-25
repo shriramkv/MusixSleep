@@ -20,4 +20,5 @@
     <string name="upload">UPLOAD SONG</string>
     <string name="select_song">Select song</string>
     <string name="no_song_selected">No song selected</string>
+    <string name="list_of_the_songs">List of songs</string>
 </resources>

@@ -9,7 +9,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
 import android.media.MediaMetadataRetriever;
-import android.music.sleep.Model.UploadSong;
+import android.music.sleep.model.UploadSong;
 import android.music.sleep.R;
 import android.net.Uri;
 import android.os.Build;
@@ -23,8 +23,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.ybq.android.spinkit.sprite.Sprite;
-import com.github.ybq.android.spinkit.style.Wave;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

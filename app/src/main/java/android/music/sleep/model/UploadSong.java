@@ -1,10 +1,14 @@
-package android.music.sleep.Model;
+package android.music.sleep.model;
 
 import com.google.firebase.database.Exclude;
 
 public class UploadSong {
 
     public String songName, songArtist, songRaaga, songDuration, songLink, mKey;
+
+    public UploadSong() {
+
+    }
 
     public UploadSong(String songName, String songArtist, String songRaaga, String songDuration, String songLink) {
         if (songName.trim().equals("")) {

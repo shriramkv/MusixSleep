@@ -23,7 +23,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -125,7 +127,7 @@ public class UploadActivity extends AppCompatActivity {
             Toast.makeText(UploadActivity.this, "Please select a song", Toast.LENGTH_LONG).show();
         } else {
             if (mUploadTask != null && mUploadTask.isInProgress()) {
-                Toast.makeText(getApplicationContext(),"Song upload is already in progress",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Song upload is already in progress", Toast.LENGTH_LONG).show();
             } else {
                 uploadFile();
             }
@@ -174,6 +176,13 @@ public class UploadActivity extends AppCompatActivity {
                             progressBar.setProgress((int) progress);
                         }
                     })
+                    .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                            Toast.makeText(UploadActivity.this,"Uploaded successfully!",Toast.LENGTH_SHORT).show();
+                            progressBar.setProgress(0);
+                        }
+                    })
             ;
 
         } else {
@@ -184,7 +193,8 @@ public class UploadActivity extends AppCompatActivity {
     private String getDurationFromMilli(int durationInMillis) {
         Date date = new Date(durationInMillis);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss", Locale.getDefault());
-        return simpleDateFormat.format(date);
+        String ans = simpleDateFormat.format(date);
+        return ans.substring(1);
     }
 
     private int findSongDuration(Uri audioUri) {

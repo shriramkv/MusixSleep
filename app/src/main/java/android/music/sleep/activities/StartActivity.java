@@ -46,6 +46,7 @@ public class StartActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     ValueEventListener valueEventListener;
     SongsAdapter adapter;
+    int pointer = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,59 +146,89 @@ public class StartActivity extends AppCompatActivity {
     }
 
     public void playSong(List<UploadSong> arrayListSongs, int adapterPosition) throws IOException {
-        UploadSong uploadSong = arrayListSongs.get(adapterPosition);
-        song_name.setText(uploadSong.getSongName() + " - by " + uploadSong.getSongArtist());
-        handler = new Handler();
-        if (mediaPlayer != null) {
-            mediaPlayer.stop();
-            mediaPlayer.release();
-            mediaPlayer = null;
-            playIcon.setImageResource(R.drawable.ic_play_arrow_black_24dp);
-        }
-        mediaPlayer = new MediaPlayer();
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        mediaPlayer.setDataSource(uploadSong.getSongLink());
-        mediaPlayer.prepareAsync();
-        song_seekbar.setProgress(0);
-        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                song_seekbar.setMax(mediaPlayer.getDuration());
-            }
-        });
-
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
+        pointer = adapterPosition;
+        if (pointer >= 0 && pointer < arrayListSongs.size()) {
+            UploadSong uploadSong = arrayListSongs.get(adapterPosition);
+            song_name.setText(uploadSong.getSongName() + " - by " + uploadSong.getSongArtist());
+            handler = new Handler();
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+                mediaPlayer.release();
+                mediaPlayer = null;
                 playIcon.setImageResource(R.drawable.ic_play_arrow_black_24dp);
             }
-        });
-
-
-        playIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playPauseSong();
-            }
-        });
-
-        song_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser) {
-                    mediaPlayer.seekTo(progress);
+            mediaPlayer = new MediaPlayer();
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            mediaPlayer.setDataSource(uploadSong.getSongLink());
+            mediaPlayer.prepareAsync();
+            song_seekbar.setProgress(0);
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    song_seekbar.setMax(mediaPlayer.getDuration());
+                    playPauseSong();
                 }
-            }
+            });
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    playIcon.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+                }
+            });
 
-            }
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            playIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    playPauseSong();
+                }
+            });
 
-            }
-        });
+            nextIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        playSong(mUpload,pointer+1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            previousIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        playSong(mUpload,pointer-1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            song_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    if (fromUser) {
+                        mediaPlayer.seekTo(progress);
+                    }
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
+        } else if (pointer < 0){
+            playSong(mUpload, mUpload.size()-1);
+        } else if (pointer > mUpload.size()-1) {
+            playSong(mUpload, 0);
+        }
     }
 }

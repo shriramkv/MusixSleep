@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.music.sleep.adapters.SongsAdapter;
+import android.music.sleep.model.BaseActivity;
 import android.music.sleep.model.UploadSong;
 import android.music.sleep.R;
 import android.os.Bundle;
@@ -31,10 +32,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends BaseActivity {
 
     boolean doubleBackToExitPressedOnce = false;
-    private MediaPlayer mediaPlayer;
+    public static MediaPlayer mediaPlayer;
     private Runnable runnable;
     private Handler handler;
     TextView song_name;

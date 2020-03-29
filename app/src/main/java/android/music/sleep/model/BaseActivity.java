@@ -17,7 +17,7 @@ import com.google.android.gms.location.DetectedActivity;
 
 public class BaseActivity extends AppCompatActivity {
 
-    public static final long DISCONNECT_TIMEOUT = 10000; // 15 min = 15 * 60 * 1000 ms = 900000
+    public static final long DISCONNECT_TIMEOUT = 900000; // 15 min = 15 * 60 * 1000 ms = 900000
     BroadcastReceiver broadcastReceiver;
 
     private Handler disconnectHandler = new Handler(new Handler.Callback() {

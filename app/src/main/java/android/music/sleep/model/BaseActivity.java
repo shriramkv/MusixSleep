@@ -17,7 +17,7 @@ import com.google.android.gms.location.DetectedActivity;
 
 public class BaseActivity extends AppCompatActivity {
 
-    public static final long DISCONNECT_TIMEOUT = 900000; // 15 min = 15 * 60 * 1000 ms = 600000
+    public static final long DISCONNECT_TIMEOUT = 10000; // 15 min = 15 * 60 * 1000 ms = 900000
     BroadcastReceiver broadcastReceiver;
 
     private Handler disconnectHandler = new Handler(new Handler.Callback() {
@@ -55,6 +55,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void stopAndExit() {
+        startTracking();
         broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -65,7 +66,6 @@ public class BaseActivity extends AppCompatActivity {
                 }
             }
         };
-        startTracking();
     }
 
     private void handleUserActivity(int type, int confidence) {
@@ -142,7 +142,6 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-
         LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
     }
 

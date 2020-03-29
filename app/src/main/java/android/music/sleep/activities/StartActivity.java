@@ -1,16 +1,23 @@
 package android.music.sleep.activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.music.sleep.adapters.SongsAdapter;
 import android.music.sleep.model.BaseActivity;
 import android.music.sleep.model.UploadSong;
 import android.music.sleep.R;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -50,10 +57,15 @@ public class StartActivity extends BaseActivity {
     SongsAdapter adapter;
     int pointer = 0;
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        if (ContextCompat.checkSelfPermission(StartActivity.this, Manifest.permission.ACTIVITY_RECOGNITION)!= PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(StartActivity.this, new String[]{Manifest.permission.ACTIVITY_RECOGNITION},111);
+        }
 
         playIcon = findViewById(R.id.play_icon);
         previousIcon = findViewById(R.id.previous_icon);

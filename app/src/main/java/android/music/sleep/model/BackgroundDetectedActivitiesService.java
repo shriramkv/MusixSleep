@@ -5,7 +5,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
-import android.widget.Toast;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,26 +57,20 @@ public class BackgroundDetectedActivitiesService extends Service {
 
     public void requestActivityUpdatesButtonHandler() {
         Task<Void> task = mActivityRecognitionClient.requestActivityUpdates(
-                30000, //Interval = 30 seconds
+                5000, //Interval = 5 seconds
                 mPendingIntent);
 
         task.addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void result) {
-                Toast.makeText(getApplicationContext(),
-                        "Successfully requested activity updates",
-                        Toast.LENGTH_SHORT)
-                        .show();
+                Log.d("Task","Task recognition Successful");
             }
         });
 
         task.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(),
-                        "Requesting activity updates failed to start",
-                        Toast.LENGTH_SHORT)
-                        .show();
+                Log.d("Task",e.toString());
             }
         });
     }
@@ -87,18 +81,14 @@ public class BackgroundDetectedActivitiesService extends Service {
         task.addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void result) {
-                Toast.makeText(getApplicationContext(),
-                        "Removed activity updates successfully!",
-                        Toast.LENGTH_SHORT)
-                        .show();
+                Log.d("Task","Removed successfully");
             }
         });
 
         task.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(), "Failed to remove activity updates!",
-                        Toast.LENGTH_SHORT).show();
+                Log.d("Task",e.toString());
             }
         });
     }

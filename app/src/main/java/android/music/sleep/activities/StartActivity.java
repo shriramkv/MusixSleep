@@ -1,10 +1,10 @@
 package android.music.sleep.activities;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.music.sleep.adapters.SongsAdapter;
@@ -40,7 +40,8 @@ public class StartActivity extends BaseActivity {
     private Handler handler;
     TextView song_name;
     SeekBar song_seekbar;
-    ImageView playIcon, previousIcon, nextIcon;
+    @SuppressLint("StaticFieldLeak")
+    public static ImageView playIcon, previousIcon, nextIcon;
     ProgressBar progressBar;
     RecyclerView recyclerView;
     List<UploadSong> mUpload;

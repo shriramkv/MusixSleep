@@ -159,7 +159,7 @@ public class StartActivity extends BaseActivity {
         databaseReference.removeEventListener(valueEventListener);
     }
 
-    public void playSong(List<UploadSong> arrayListSongs, int adapterPosition) throws IOException {
+    public void playSong(final List<UploadSong> arrayListSongs, int adapterPosition) throws IOException {
         pointer = adapterPosition;
         if (pointer >= 0 && pointer < arrayListSongs.size()) {
             UploadSong uploadSong = arrayListSongs.get(adapterPosition);
@@ -188,6 +188,12 @@ public class StartActivity extends BaseActivity {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
                     playIcon.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+                    pointer += 1;
+                    try {
+                        playSong(arrayListSongs, pointer);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
 
@@ -202,8 +208,9 @@ public class StartActivity extends BaseActivity {
             nextIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    pointer += 1;
                     try {
-                        playSong(mUpload,pointer+1);
+                        playSong(mUpload,pointer);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -213,8 +220,9 @@ public class StartActivity extends BaseActivity {
             previousIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    pointer -= 1;
                     try {
-                        playSong(mUpload,pointer-1);
+                        playSong(mUpload,pointer);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
